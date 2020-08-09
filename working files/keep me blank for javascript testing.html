@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// went back to make it all a button instead of an instant prompt
+var generateBtn = document.querySelector("#generate");
+
+// went back to create this variable for what characters are allowed.
+var allowedChars = " "
+// went back again to make these their own variables
+// so that I can guarantee one of each type in the final passowrd
+var lowerCase = "abcdefghijklmnopqrstuvwxyz"
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var numericChar = "0123456789"
+var specialChar = "!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+// which means we need a running variable to ++ every time they say yes
+var characterTypeTotal = 0; 
+
+// but we also gotta know if they said yes to each question, so
+var lowerYes = false 
+var upperYes = false
+var numericYes = false
+var specialYes = false
+
+// GIVEN I need a new, secure password
+// WHEN I click the button to generate a password
+// THEN I am presented with a series of prompts for password criteria
+  // so let's setup the prompts to ask the user for what criteria they want
+  // one at a time
+
+// WHEN prompted for the length of the password
+// THEN I choose a length of at least 8 characters and no more than 128 characters
+var passwordLongness = prompt("How long of a password? Please enter a number between 8 and 128.");
+// WHEN I answer each prompt
+// THEN my input should be validated 
+alert("You have entered " + passwordLongness + " characters.")
+// gotta parse the integer or computer will hate it because its a string
+passwordLongness = parseInt(passwordLongness)
+// test to make sure it works
+console.log(passwordLongness)
+
+
+// THEN I choose lowercase, 
+if (confirm("Lower case letters ok?")) {
+  allowedChars += "abcdefghijklmnopqrstuvwxyz"
+  // WHEN I answer each prompt THEN my input should be validated
+    alert("You have selected Yes.");
+    // increase our running count of character types and set the matching variable to true
+    characterTypeTotal++;
+    var lowerYes = true;
+}
+  else {
+  alert("You have selected No.")
+}
+
+// uppercase, 
+if (confirm ("Uppercase letters ok?")) {
+  allowedChars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  // THEN my input should be validated
+  alert("Uppercase Letters Allowed")
+  characterTypeTotal++;
+  var upperYes = true;
+} else {
+  alert("you don't like upper case letters")
+}
+
+// numeric, 
+if (confirm ("Would you like to include numbers 0-9?")) {
+  allowedChars += "0123456789"
+  alert("You have selected Yes.")
+  characterTypeTotal++;
+  var numericYes = true;
+} else {
+  alert("You have selected No.")
+}
+
+// and/or special characters
+if (confirm ("Special characters ok?")) {
+// I copied these from the linked website by hand like a tool lol
+  allowedChars += "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+  alert("You have selected Yes.")
+  characterTypeTotal++;
+  var specialYes = true
+} else { 
+  alert("You have selected No.")
+}
+
+// print it to see if it works
+console.log(allowedChars)
+
+// wow it kinda works
+// now to set up the password generator proper
+// pw will start blank
+var newPassword = " "
+for (var i = 0, n = allowedChars.length; i < passwordLongness; ++i) {
+    newPassword += allowedChars.charAt(Math.floor(Math.random() * n));
+  }
+
+// print it
+console.log(newPassword)
+
+
+
+
+// WHEN I answer each prompt
+// THEN my input should be validated and at least one character type should be selected
+  // ook i'll have to program that into the function later
+  // alright I feel like with 8 characters the odds at least 1 of each type requested
+  // will be chosen is pretty good...
+  // ok this part friggin killed me but i realized i could just subtract 1
+  // each time the user says yes... and then manually generate 1 of each char they want
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

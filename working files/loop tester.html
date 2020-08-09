@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+loop:
+while(true){
+    var sport = prompt("What sport do you play? (Baseball, Football, Soccer, or Track)").toLowerCase(); 
+    switch (sport) {
+        case "baseball": 
+            field = "Field 1";
+            break loop;
+        case "football": 
+            field = "Field 2";
+            break loop;
+        case "soccer":
+            field = "Field 3";
+            break loop;
+        case "track":
+            field = "Field 4";
+            break loop;
+        default: alert("Please enter a valid sport");
+    }
+}
+
+    </script>
+
+
+
+
+</body>
+</html>
